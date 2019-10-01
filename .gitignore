@@ -1,2 +1,5 @@
 # MySQL on Docker
 /docker/mysql/.env
+
+# PHP-FPM on Docker
+/docker/php/php.ini
