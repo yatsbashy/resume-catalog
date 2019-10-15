@@ -5,4 +5,22 @@
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
+
+@import 'base';
+@import 'container';
+@import 'grid';
+@import 'header';
+@import 'photo';
+@import 'photo-detail';
+@import 'photo-form';
+@import 'button';
+@import 'form';
+@import 'tab';
+@import 'footer';
+@import 'errors';
+@import 'pagination';
+@import 'panel';
+@import 'title';
+@import 'loader';
+@import 'message';
