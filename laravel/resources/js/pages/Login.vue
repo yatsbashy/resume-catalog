@@ -25,6 +25,17 @@
     </div>
     <div class="panel" v-show="tab === 2">
       <form class="form" @submit.prevent="register">
+        <div v-if="registerErrorMessages" class="errors">
+          <ul v-if="registerErrorMessages.name">
+            <li v-for="msg in registerErrorMessages.name" :key="msg">{{ msg }}</li>
+          </ul>
+          <ul v-if="registerErrorMessages.email">
+            <li v-for="msg in registerErrorMessages.email" :key="msg">{{ msg }}</li>
+          </ul>
+          <ul v-if="registerErrorMessages.password">
+            <li v-for="msg in registerErrorMessages.password" :key="msg">{{ msg }}</li>
+          </ul>
+        </div>
         <label for="username">名前</label>
         <input type="text" class="form__item" id="username" v-model="registerForm.name" />
         <label for="email">メールアドレス</label>
@@ -65,6 +76,13 @@ export default {
       }
     };
   },
+  computed: {
+    ...mapState({
+      apiStatus: state => state.auth.apiStatus,
+      loginErrorMessages: state => state.auth.loginErrorMessages,
+      registerErrorMessages: state => state.auth.registerErrorMessages
+    })
+  },
   methods: {
     async login() {
       await this.$store.dispatch('auth/login', this.loginForm);
@@ -75,17 +93,15 @@ export default {
     },
     async register() {
       await this.$store.dispatch('auth/register', this.registerForm);
-      this.$router.push('/');
+
+      if (this.apiStatus) {
+        this.$router.push('/');
+      }
     },
     clearError() {
       this.$store.commit('auth/setLoginErrorMessages', null);
+      this.$store.commit('auth/setRegisterErrorMessages', null);
     }
-  },
-  computed: {
-    ...mapState({
-      apiStatus: state => state.auth.apiStatus,
-      loginErrorMessages: state => state.auth.loginErrorMessages
-    })
   },
   created() {
     this.clearError();

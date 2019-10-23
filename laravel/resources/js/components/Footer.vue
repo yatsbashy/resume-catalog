@@ -7,15 +7,21 @@
 
 <script>
 export default {
+  computed: {
+    ...mapState({
+      apiStatus: state => state.auth.apiStatus
+    }),
+    ...mapGetters({
+      isLoggedIn: 'auth/isLoggedIn'
+    })
+  },
   methods: {
     async logout() {
       await this.$store.dispatch('auth/logout');
-      this.$router.push('/login');
-    }
-  },
-  computed: {
-    isLoggedIn() {
-      return this.$store.getters['auth/isLoggedIn'];
+
+      if (this.apiStatus) {
+        this.$router.push('/login');
+      }
     }
   }
 };
