@@ -1,5 +1,8 @@
+import { OK } from '../util';
+
 const state = {
-  user: null
+  user: null,
+  apiStatus: null
 };
 
 const getters = {
@@ -10,6 +13,9 @@ const getters = {
 const mutations = {
   setUser(state, user) {
     state.user = user;
+  },
+  setApiStatus(state, status) {
+    state.apiStatus = status;
   }
 };
 
@@ -19,8 +25,23 @@ const actions = {
     context.commit('setUser', response.data);
   },
   async login(context, data) {
-    const response = await axios.post('/api/login', data);
-    context.commit('setUser', response.data);
+    // apiStatus をリセット
+    context.commit('setApiStatus', null);
+
+    // API 呼び出し
+    const response = await axios
+      .post('/api/login', data)
+      .catch(err => err.response || err);
+
+    // 成功
+    if (response.status === OK) {
+      context.commit('setApiStatus', true);
+      context.commit('setUser', response.data);
+      return false;
+    }
+    // 失敗
+    context.commit('setApiStatus', false);
+    context.commit('error/setCode', response.status, { root: true });
   },
   async logout(context) {
     await axios.post('/api/logout');
