@@ -1,0 +1,45 @@
+FROM php:7.3.10-fpm-alpine3.10
+
+# Install Linux packages
+RUN apk add --no-cache \
+    curl \
+    freetype-dev \
+    git \
+    icu-dev \
+    libjpeg-turbo-dev \
+    libpng-dev \
+    libzip-dev \
+    unzip \
+    vim \
+    wget \
+    zip \
+    zlib-dev
+
+# Install PHP extensions
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install -j$(nproc) \
+    bcmath \
+    gd \
+    mbstring \
+    mysqli \
+    iconv \
+    intl \
+    pdo_mysql \
+    zip
+
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+ENV COMPOSER_ALLOW_SUPERUSER 1
+
+# Set up apps
+COPY ./docker/php/php.ini-production /usr/local/etc/php/php.ini
+COPY ./laravel /var/www/laravel
+WORKDIR /var/www/laravel
+
+RUN chown -R www-data:www-data ./storage \
+    && chown -R www-data:www-data ./bootstrap/cache
+
+# Set up Laravel
+RUN composer install --no-dev \
+    && cp .env.prod .env \
+    && php artisan key:generate
