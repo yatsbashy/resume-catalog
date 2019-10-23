@@ -5,6 +5,7 @@ import store from './store';
 // Components
 import ResumeList from './pages/ResumeList.vue';
 import Login from './pages/Login.vue';
+import SystemError from './pages/errors/System.vue';
 
 Vue.use(VueRouter);
 
@@ -23,6 +24,10 @@ const routes = [
         next();
       }
     }
+  },
+  {
+    path: '/500',
+    component: SystemError
   }
 ];
 
