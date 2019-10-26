@@ -29,12 +29,16 @@ const routes = [
     }
   },
   {
+    path: '/404',
+    component: NotFound
+  },
+  {
     path: '/500',
     component: SystemError
   },
   {
     path: '*',
-    component: NotFound
+    redirect: '/404'
   }
 ];
 
