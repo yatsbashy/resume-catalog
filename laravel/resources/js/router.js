@@ -13,12 +13,14 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    component: ResumeList
+    component: ResumeList,
+    meta: { requiresAuth: true }
   },
   {
     path: '/login',
     component: Login,
     beforeEnter(to, from, next) {
+      // ログインしていればトップページに移動する
       if (store.getters['auth/isLoggedIn']) {
         next('/');
       } else {
@@ -39,6 +41,21 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  // ログインしていなければログインページに移動する
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!store.getters['auth/isLoggedIn']) {
+      next({
+        path: '/login'
+      });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;
