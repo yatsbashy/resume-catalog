@@ -20,6 +20,8 @@ class ProfileApiTest extends TestCase
         'github_url',
         'qiita_url',
         'specialty',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -50,9 +52,13 @@ class ProfileApiTest extends TestCase
 
         // レスポンスを assert
         $response->assertStatus(200)
-            ->assertJsonStructure(self::PROFILE_JSON_STRUCTURE)
+            ->assertJsonStructure([
+                'data' => self::PROFILE_JSON_STRUCTURE
+            ])
             ->assertJson([
-                'picture_filename' => $profile->picture_filename,
+                'data' => [
+                    'picture_filename' => $profile->picture_filename,
+                ]
             ]);
     }
 }
