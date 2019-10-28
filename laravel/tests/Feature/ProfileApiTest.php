@@ -15,6 +15,7 @@ class ProfileApiTest extends TestCase
     const PROFILE_JSON_STRUCTURE = [
         'id',
         'user_id',
+        'picture_filename',
         'final_education',
         'github_url',
         'qiita_url',
@@ -51,7 +52,7 @@ class ProfileApiTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonStructure(self::PROFILE_JSON_STRUCTURE)
             ->assertJson([
-                'final_education' => $profile->final_education,
+                'picture_filename' => $profile->picture_filename,
             ]);
     }
 }
