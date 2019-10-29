@@ -32,34 +32,7 @@ class UserApiTest extends TestCase
     }
 
     /**
-     * ログイン中のユーザを確認する
-     *
-     * @return void
-     */
-    public function testIsLoggedIn()
-    {
-        $response = $this->actingAs($this->user)
-            ->getJson(route('user'));
-
-        $response->assertStatus(200)
-            ->assertJson(['name' => $this->user->name]);
-    }
-
-    /**
-     * ユーザがログインしていない場合空文字を返却する
-     *
-     * @return void
-     */
-    public function testIsNotLoggedIn()
-    {
-        $response = $this->getJson(route('user'));
-
-        $response->assertStatus(200);
-        $this->assertEquals('', $response->content());
-    }
-
-    /**
-     * ユーザ詳細を返却する
+     * ユーザ一覧を返却する
      *
      * @return void
      */
