@@ -21,9 +21,9 @@ Route::post('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
 // ログインユーザ
-Route::get('/user', function () {
+Route::get('/me', function () {
     return Auth::user();
-})->name('user');
+})->name('me');
 
 // プロフィール
 Route::get('/users/{id}/profile', 'ProfileController@show')->name('profile.show');
