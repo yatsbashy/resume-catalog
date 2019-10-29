@@ -27,3 +27,6 @@ Route::get('/user', function () {
 
 // プロフィール
 Route::get('/users/{id}/profile', 'ProfileController@show')->name('profile.show');
+
+// ユーザ
+Route::apiResource('/users', 'UserController')->only(['index', 'show']);
