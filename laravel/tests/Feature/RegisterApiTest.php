@@ -43,6 +43,11 @@ class RegisterApiTest extends TestCase
         collect($response->json('data'))->each(function ($item) {
             return $this->assertDataTypes($item);
         });
+        // Profile が作成されているか assert
+        $user_json = $response->json();
+        $this->assertDatabaseHas('profiles', [
+            'user_id' => $user_json['id']
+        ]);
     }
 
     /**
