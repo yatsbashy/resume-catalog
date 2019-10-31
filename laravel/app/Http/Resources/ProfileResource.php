@@ -19,9 +19,9 @@ class ProfileResource extends JsonResource
             'user_id' => $this->user_id,
             'picture_filename' => $this->picture_filename,
             'final_education' => $this->final_education,
-            'github_url' => $this->github_url,
-            'qiita_url' => $this->github_url,
             'specialty' => $this->specialty,
+            'github_url' => $this->github_url,
+            'qiita_url' => $this->qiita_url,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
