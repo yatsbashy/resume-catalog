@@ -17,10 +17,10 @@ class CreateProfilesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
             $table->string('picture_filename')->nullable();
-            $table->string('final_education');
+            $table->string('final_education')->nullable();
+            $table->string('specialty')->nullable();
             $table->string('github_url')->nullable();
             $table->string('qiita_url')->nullable();
-            $table->string('specialty')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
