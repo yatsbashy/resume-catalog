@@ -14,12 +14,10 @@ class UserResource extends JsonResource
      */
     public function toArray($request)
     {
-        $profile = $this->profile;
-
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'profile_picture_filename' => $profile ? $profile->picture_filename : null,
+            'profile_picture_url' => $this->profile->picture_url,
         ];
     }
 }
