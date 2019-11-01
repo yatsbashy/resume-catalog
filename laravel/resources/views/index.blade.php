@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css">
 
   <!-- Styles -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 
