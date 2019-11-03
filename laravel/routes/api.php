@@ -30,3 +30,6 @@ Route::get('/users/{id}/profile', 'ProfileController@show')->name('profile.show'
 
 // ユーザ
 Route::apiResource('/users', 'UserController')->only(['index', 'show']);
+
+// Skill
+Route::apiResource('/users/{id}/skills', 'SkillController')->only(['index']);
