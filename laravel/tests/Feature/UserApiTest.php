@@ -15,7 +15,7 @@ class UserApiTest extends TestCase
     const USER_JSON_STRUCTURE = [
             'id',
             'name',
-            'profile_picture_filename',
+            'profile_picture_url',
     ];
 
     /**
@@ -29,6 +29,7 @@ class UserApiTest extends TestCase
 
         // create a test user
         $this->user = factory(User::class)->create();
+        $this->user->profile = factory(Profile::class)->create(['user_id' => $this->user->id]);
     }
 
     /**
@@ -43,7 +44,7 @@ class UserApiTest extends TestCase
         factory(Profile::class)->create(['user_id' => $user->id]);
 
         // API 呼び出し
-        $response = $this->getJson(route('users.index', ['id' => $user->id]));
+        $response = $this->getJson(route('users.index'));
 
         // レスポンスを assert
         $response->assertStatus(200)
