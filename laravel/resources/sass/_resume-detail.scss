@@ -1,0 +1,15 @@
+.resume-detail {
+  padding: 0 auto;
+
+  &__profile-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__name {
+    margin-left: 1.8rem;
+    font-size: 1.8rem;
+    font-family: 'Parata', serif;
+  }
+}
