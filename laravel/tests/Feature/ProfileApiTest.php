@@ -33,7 +33,7 @@ class ProfileApiTest extends TestCase
 
         // テストデータ作成
         $this->user = factory(User::class)->create();
-        $this->user->profile = factory(Profile::class)->create(['user_id' => $this->user->id]);
+        $this->profile = factory(Profile::class)->create(['user_id' => $this->user->id]);
     }
 
     /**
@@ -44,7 +44,7 @@ class ProfileApiTest extends TestCase
     public function testShow()
     {
         // API 呼び出し
-        $response = $this->getJson(route('profile.show', ['id' => $this->user->id]));
+        $response = $this->getJson(route('profiles.show', ['user' => $this->user->id]));
 
         // レスポンスを assert
         $response->assertStatus(200)
@@ -53,7 +53,7 @@ class ProfileApiTest extends TestCase
             ])
             ->assertJson([
                 'data' => [
-                    'picture_filename' => $this->user->profile->picture_filename,
+                    'picture_filename' => $this->profile->picture_filename,
                 ]
             ]);
     }
