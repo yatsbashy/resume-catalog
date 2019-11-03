@@ -27,7 +27,7 @@ class UserApiTest extends TestCase
 
         // テストデータ作成
         $this->user = factory(User::class)->create();
-        $this->user->profile = factory(Profile::class)->create(['user_id' => $this->user->id]);
+        $this->profile = factory(Profile::class)->create(['user_id' => $this->user->id]);
     }
 
     /**

@@ -25,11 +25,11 @@ Route::get('/me', function () {
     return Auth::user();
 })->name('me');
 
-// プロフィール
-Route::get('/users/{id}/profile', 'ProfileController@show')->name('profile.show');
-
 // ユーザ
 Route::apiResource('/users', 'UserController')->only(['index', 'show']);
 
+// プロフィール
+Route::get('/users/{user}/profile', 'ProfileController@show')->name('profiles.show');
+
 // Skill
-Route::apiResource('/users/{id}/skills', 'SkillController')->only(['index']);
+Route::apiResource('/users/{user}/skills', 'SkillController')->only(['index']);
