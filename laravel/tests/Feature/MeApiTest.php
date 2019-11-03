@@ -12,15 +12,13 @@ class MeApiTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * Setup the test environment.
-     *
      * @return void
      */
     public function setUp(): void
     {
         parent::setUp();
 
-        // create a test user
+        // テストデータを作成
         $this->user = factory(User::class)->create();
     }
 

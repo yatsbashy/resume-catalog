@@ -12,14 +12,13 @@ class LoginApiTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * テストユーザ作成
-     *
      * @return void
      */
     public function setUp(): void
     {
         parent::setUp();
 
+        // テストデータ作成
         $this->user = factory(User::class)->create();
     }
 
@@ -30,7 +29,7 @@ class LoginApiTest extends TestCase
      */
     public function testLogin()
     {
-        // API を叩く
+        // API 呼び出し
         $response = $this->postJson(route('login'), [
             'email'    => $this->user->email,
             'password' => 'password',
@@ -49,11 +48,9 @@ class LoginApiTest extends TestCase
      */
     public function testLogout()
     {
-        // API を叩く
         $response = $this->actingAs($this->user)
             ->postJson(route('logout'));
 
-        // レスポンスを assert
         $response->assertStatus(200);
         $this->assertGuest();
     }
