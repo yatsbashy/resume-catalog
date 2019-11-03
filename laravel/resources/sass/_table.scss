@@ -1,0 +1,23 @@
+.table {
+  margin: auto;
+  border-collapse: collapse;
+
+  &__tr {
+    border-bottom: solid 2px $grey-3;
+
+    &:nth-last-child(1) {
+      border-bottom: none;
+    }
+  }
+
+  &__th {
+    background-color: $grey-4;
+    padding: 15px 20px;
+    font-weight: bold;
+  }
+
+  &__td {
+    padding: 15px 20px;
+    word-break: break-all;
+  }
+}
