@@ -19,15 +19,13 @@ class UserApiTest extends TestCase
     ];
 
     /**
-     * Setup the test environment.
-     *
      * @return void
      */
     public function setUp(): void
     {
         parent::setUp();
 
-        // create a test user
+        // テストデータ作成
         $this->user = factory(User::class)->create();
         $this->user->profile = factory(Profile::class)->create(['user_id' => $this->user->id]);
     }
@@ -39,10 +37,6 @@ class UserApiTest extends TestCase
      */
     public function testIndex()
     {
-        // テストデータを作成
-        $user = factory(User::class)->create();
-        factory(Profile::class)->create(['user_id' => $user->id]);
-
         // API 呼び出し
         $response = $this->getJson(route('users.index'));
 
@@ -62,10 +56,7 @@ class UserApiTest extends TestCase
      */
     public function testShow()
     {
-        $user = factory(User::class)->create();
-        factory(Profile::class)->create(['user_id' => $user->id]);
-
-        $response = $this->getJson(route('users.show', ['id' => $user->id]));
+        $response = $this->getJson(route('users.show', ['user' => $this->user->id]));
 
         $response->assertStatus(200)
             ->assertJsonStructure([
@@ -73,7 +64,7 @@ class UserApiTest extends TestCase
             ])
             ->assertJson([
                 'data' => [
-                    'name' => $user->name,
+                    'name' => $this->user->name,
                 ]
             ]);
     }

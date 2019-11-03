@@ -18,13 +18,12 @@ class RegisterApiTest extends TestCase
     ];
 
     /**
-     * 新規登録したユーザを返却するテスト
+     * 新規登録したユーザを返却する
      *
      * @return void
      */
     public function testResister()
     {
-        // テストユーザ作成
         $data = [
             'name'                  => 'testuser',
             'email'                 => 'test@email.com',
@@ -32,7 +31,7 @@ class RegisterApiTest extends TestCase
             'password_confirmation' => 'test1234',
         ];
 
-        // API を叩く
+        // API 呼び出し
         $response = $this->postJson(route('register'), $data);
 
         // レスポンスを assert
