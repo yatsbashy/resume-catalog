@@ -1,6 +1,6 @@
 .button {
   border: 1px solid $grey-3;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   color: $grey-2;
   cursor: pointer;
   display: inline-block;
@@ -8,11 +8,9 @@
   font-size: 1rem;
   line-height: 1;
   outline: none;
-  padding: .5rem .75rem;
+  padding: 0.5rem 0.75rem;
   text-decoration: none;
-  transition:
-    border-color 300ms ease-in-out,
-    color 300ms ease-in-out;
+  transition: border-color 300ms ease-in-out, color 300ms ease-in-out;
 
   &:hover {
     border-color: $grey-1;
@@ -20,11 +18,12 @@
   }
 
   .icon {
-    margin-right: .5em;
+    margin-right: 0.5em;
   }
 
   &--link {
     border: 0;
+    font-size: 0.9rem;
   }
 
   &--inverse {
@@ -36,7 +35,7 @@
     &:hover {
       background: $text-color;
       color: #fff;
-      opacity: .8;
+      opacity: 0.8;
     }
   }
 
@@ -62,7 +61,7 @@
     &:hover {
       border-color: $red;
       color: #fff;
-      opacity: .8;
+      opacity: 0.8;
     }
   }
 }
