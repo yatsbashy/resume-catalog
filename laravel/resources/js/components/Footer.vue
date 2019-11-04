@@ -1,30 +1,8 @@
 <template>
   <footer class="footer">
-    <button v-if="isLoggedIn" class="button button--link" @click="logout">ログアウト</button>
-    <RouterLink v-else class="button button--link" to="/login">ログイン / 新規登録</RouterLink>
+    <p>
+      Copyright &copy; 2019
+      <b>yatsubashi</b> All Rights Reserved.
+    </p>
   </footer>
 </template>
-
-<script>
-import { mapState, mapGetters } from 'vuex';
-
-export default {
-  computed: {
-    ...mapState({
-      apiStatus: state => state.auth.apiStatus
-    }),
-    ...mapGetters({
-      isLoggedIn: 'auth/isLoggedIn'
-    })
-  },
-  methods: {
-    async logout() {
-      await this.$store.dispatch('auth/logout');
-
-      if (this.apiStatus) {
-        this.$router.push('/login');
-      }
-    }
-  }
-};
-</script>
