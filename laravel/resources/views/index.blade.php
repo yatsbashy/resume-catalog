@@ -9,7 +9,7 @@
   <script src="{{ mix('js/app.js') }}" defer></script>
   <!-- Fonts -->
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+JP:700&display=swap&subset=japanese">
   <!-- Styles -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
