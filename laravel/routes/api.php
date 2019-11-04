@@ -33,3 +33,6 @@ Route::get('/users/{user}/profile', 'ProfileController@show')->name('profiles.sh
 
 // Skill
 Route::apiResource('/users/{user}/skills', 'SkillController')->only(['index']);
+
+// Work
+Route::apiResource('/users/{user}/works', 'WorkController')->only(['index']);
