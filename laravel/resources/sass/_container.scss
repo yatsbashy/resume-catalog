@@ -1,6 +1,7 @@
 .container {
   margin: 0 auto;
   max-width: $max-width;
+  min-height: 500px;
   padding: 0 2%;
 
   &--small {
