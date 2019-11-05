@@ -25,7 +25,7 @@
           >{{ profile.qiita_url }}</a>
         </td>
       </tr>
-      <tr class="table__tr">
+      <tr class="table__tr--no-border">
         <th class="table__th">最終学歴</th>
         <td class="table__td">{{ profile.final_education }}</td>
       </tr>
