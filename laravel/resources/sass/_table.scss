@@ -1,0 +1,32 @@
+.table {
+  margin: auto;
+  border-collapse: collapse;
+
+  &__tr {
+    vertical-align: middle;
+    border-bottom: solid 2px $grey-3;
+
+    &--no-border {
+      border-bottom: none;
+    }
+  }
+
+  &__th {
+    text-align: center;
+    background-color: $grey-4;
+    padding: 15px 20px;
+    font-weight: bold;
+  }
+
+  &__td {
+    text-align: left;
+    padding: 15px 20px;
+    word-break: break-all;
+    white-space: pre-wrap;
+    line-height: 1.5;
+
+    &--center {
+      text-align: center;
+    }
+  }
+}

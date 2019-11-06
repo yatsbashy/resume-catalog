@@ -1,0 +1,44 @@
+.tab {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &--top-margin {
+    margin-top: 1rem;
+  }
+
+  &--center {
+    justify-content: space-around;
+  }
+
+  &__item {
+    border-bottom: 2px solid $grey-3;
+    color: $grey-2;
+    cursor: pointer;
+    margin: 0 1rem 0 0;
+    padding: 1rem;
+
+    &--link {
+      margin: 0;
+      padding: 0;
+      font-weight: bold;
+
+      a {
+        display: block;
+        padding: 1rem;
+        color: $grey-2;
+      }
+    }
+
+    &--active,
+    &:hover {
+      border-bottom: 2px solid $text-color;
+      color: $text-color;
+
+      a {
+        color: $text-color;
+      }
+    }
+  }
+}

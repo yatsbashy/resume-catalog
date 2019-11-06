@@ -1,0 +1,9 @@
+# MySQL on Docker
+/docker/mysql/.env
+
+# PHP-FPM on Docker
+/docker/php/php.ini
+
+# Bash script
+login-ecr.bash
+build-push-dockerimages.bash
