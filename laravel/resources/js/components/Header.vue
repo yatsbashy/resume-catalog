@@ -3,7 +3,10 @@
     <nav class="header__navbar">
       <RouterLink class="header__brand" to="/">ResumeCatalog</RouterLink>
       <div class="header__menu">
-        <span v-if="isLoggedIn" class="header__item">{{ username }} さん</span>
+        <span v-if="isLoggedIn" class="header__item header__item--username">{{ username }} さん</span>
+        <div class="header__item">
+          <RouterLink class="button button--link" to="/about">このサイトについて</RouterLink>
+        </div>
         <div v-if="isLoggedIn" class="header__item">
           <button class="button button--link" @click="logout">ログアウト</button>
         </div>

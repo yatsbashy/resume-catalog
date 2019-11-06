@@ -9,6 +9,7 @@ import Profile from './components/Profile.vue';
 import Skills from './components/Skills.vue';
 import Works from './components/Works.vue';
 import Login from './pages/Login.vue';
+import About from './pages/About.vue';
 import NotFound from './pages/errors/NotFound.vue';
 import SystemError from './pages/errors/System.vue';
 
@@ -54,6 +55,10 @@ const routes = [
         next();
       }
     }
+  },
+  {
+    path: '/about',
+    component: About
   },
   {
     path: '/404',
